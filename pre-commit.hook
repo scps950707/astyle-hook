@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTIONS="-s2A1k3W3jD"
+OPTIONS="-A1s2pDHk3W3j"
 
 RETURN=0
 ASTYLE=$(which astyle)
