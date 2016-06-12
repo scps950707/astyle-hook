@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTIONS="-A1s2pDHk3W3j"
+OPTIONS="-A1s4pDHk3W3j"
 
 RETURN=0
 ASTYLE=$(which astyle)
@@ -30,10 +30,8 @@ for FILE in $FILES; do
 done
 
 if [ $RETURN -eq 1 ]; then
-    echo "" >&2
-    echo "Make sure you have run astyle as the following:" >&2
-    echo "    astyle $OPTIONS --suffix=none $FILE" >&2
-    echo
+    echo "You can use the following command to format your code:"
+    echo "astyle -A1s4pDHk3W3j --suffix=none `find . -regex '.*\.[ch]p*p*$'`"
 fi
 
 exit $RETURN

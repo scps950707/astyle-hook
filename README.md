@@ -8,11 +8,7 @@ sudo apt-get install astyle
 
 To format your file you can execute below command:
 ```sh
-astyle -A1s2pDHk3W3j --suffix=none *.c
-```
-or recursively
-```sh
-astyle -A1s2pDHk3W3j --recursive --suffix=none *.c
+astyle -A1s4pDHk3W3j --suffix=none `find . -regex '.*\.[ch]p*p*$'`
 ```
 
 Install Git pre-commit hook to check C/C++ source file format
