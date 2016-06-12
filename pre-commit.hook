@@ -31,7 +31,7 @@ done
 
 if [ $RETURN -eq 1 ]; then
     echo "You can use the following command to format your code:"
-    echo "astyle -A1s4pDHk3W3j --suffix=none `find . -regex '.*\.[ch]p*p*$'`"
+    echo "astyle -A1s4pDHk3W3j --suffix=none \`find . -regex '.*\.[ch]p*p*$'\`"
 fi
 
 exit $RETURN
