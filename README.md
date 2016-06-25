@@ -14,8 +14,8 @@ astyle --suffix=none `find . -regex '.*\.[ch]p*p*$'`
 Install Git pre-commit hook to check C/C++ source file format
 ```sh
 cd `git rev-parse --show-toplevel`
-mkdir astyle-hook && cd astyle-hook/
-wget https://raw.githubusercontent.com/scps950707/astyle-hook/master/pre-commit.hook && chmod +x pre-commit.hook
+mkdir -p astyle-hook && cd astyle-hook/
+wget https://raw.githubusercontent.com/scps950707/astyle-hook/master/pre-commit.hook -O pre-commit.hook && chmod +x pre-commit.hook
 cd `git rev-parse --show-toplevel`/.git/hooks/
 ln -sf ../../astyle-hook/pre-commit.hook pre-commit
 cd ../..
