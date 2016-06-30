@@ -1,6 +1,21 @@
-#!/bin/bash
+#!/bin/sh
+
+# =============================================================================
+# Author:         scps950707
+# Email:          scps950707@gmail.com
+# Created:        2016-06-30 23:17
+# Last Modified:  2016-06-30 23:41
+# Filename:       astyle.hook
+# =============================================================================
 
 cd `git rev-parse --show-toplevel`
+
+stashdiff=`mktemp /tmp/stash.XXXXX` || exit 1
+git diff --full-index --exit-code > $stashdiff
+bothmodified=$?
+if [ $bothmodified -ne 0 ];then
+    git stash -q --keep-index
+fi
 
 ASTYLE=$(which astyle)
 if [ $? -ne 0 ]; then
@@ -23,9 +38,14 @@ for FILE in $CXXSTAGEDFILES; do
     rm "${newfile}"
     rm "${nf}"
     if [ $r != 0 ] ; then
-        astyle --suffix=none $FILE
+        $ASTYLE --suffix=none $FILE
         git add $FILE
     fi
 done
+
+if [ $bothmodified -ne 0 ];then
+    git apply < $stashdiff && git stash drop -q
+fi
+rm $stashdiff
 
 exit 0
