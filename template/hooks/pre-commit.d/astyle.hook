@@ -13,8 +13,8 @@ if [ $? -ne 0 ]; then
     DIFF=diff
 fi
 
-FILES=`git diff --cached --name-only --diff-filter=ACMR | grep -E "\.(c|cpp|h)$"`
-for FILE in $FILES; do
+CXXSTAGEDFILES=`git diff --cached --name-only --diff-filter=ACMR | grep -E "\.(c|cpp|h)$"`
+for FILE in $CXXSTAGEDFILES; do
     nf=`git checkout-index --temp $FILE | cut -f 1`
     newfile=`mktemp /tmp/${nf}.XXXXXX` || exit 1
     $ASTYLE < $nf > $newfile 2>> /dev/null
