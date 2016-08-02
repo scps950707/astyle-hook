@@ -4,7 +4,7 @@
 # Author:         scps950707
 # Email:          scps950707@gmail.com
 # Created:        2016-06-30 23:17
-# Last Modified:  2016-06-30 23:41
+# Last Modified:  2016-08-02 09:57
 # Filename:       astyle.hook
 # =============================================================================
 
@@ -28,7 +28,7 @@ if [ $? -ne 0 ]; then
     DIFF=diff
 fi
 
-CXXSTAGEDFILES=`git diff --cached --name-only --diff-filter=ACMR | grep -E "\.(c|cpp|h)$"`
+CXXSTAGEDFILES=`git diff --cached --name-only --diff-filter=ACMR | grep -E "\.(c|cpp|h|hpp)$"`
 for FILE in $CXXSTAGEDFILES; do
     nf=`git checkout-index --temp $FILE | cut -f 1`
     newfile=`mktemp /tmp/${nf}.XXXXXX` || exit 1
